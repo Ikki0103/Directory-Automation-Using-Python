@@ -66,16 +66,6 @@ def main():
                 case 4:
                     print("Goodbye!")
                     break
-
-            # if choice == 3:
-            #     print('Program Ended')
-            #     choice = None
-            #     break
-            # if not dir_name:
-            #     dir_name = input("Enter Directory Name: ")
-            #     if not dir_name:
-            #         print(f"Please Enter Directory Name")
-            #         continue
         except ValueError:
             print("Invalid Input\n")
 
