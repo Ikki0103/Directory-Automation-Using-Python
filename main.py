@@ -31,13 +31,23 @@ def search_directory(dir_name):
             os.startfile(full_path)
 
 
+def open_directory(dir_name):
+    directory_name = str(dir_name)
+    full_path = os.path.join(DIRECTORY_PATH, directory_name)
+
+    if not os.path.exists(full_path):
+        print(f"Directory {directory_name} Not Found!!")
+    else:
+        os.startfile(full_path)
+
+
 def main():
     dir_name = ""
-    print(f"{DIRECTORY_PATH}")
     while True:
         try:
             print("*****Ikki Automation Tools*****\n")
-            print("[1]Create Directory\n[2]Search Directory\n[3]Exit")
+            print(
+                "[1]Create Directory\n[2]Search Directory\n[3]Open Directory\n[4]Exit")
             choice = int(input("Enter Choice: "))
             if not dir_name:
                 dir_name = input("Enter Directory Name: ")
@@ -52,6 +62,8 @@ def main():
                 case 2:
                     search_directory(dir_name)
                 case 3:
+                    open_directory(dir_name)
+                case 4:
                     print("Goodbye!")
                     break
 
