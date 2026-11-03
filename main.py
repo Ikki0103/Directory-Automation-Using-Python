@@ -1,7 +1,9 @@
 import os
-import tkinter as tk
+from dotenv import load_dotenv
 
-DIRECTORY_PATH = "D:/Tirzuh/Justinne Khrey abad Things/PatientFiles"
+load_dotenv()
+
+DIRECTORY_PATH = os.getenv("PATIENT_FILES_DIR")
 
 
 def create_directory(dir_name):
@@ -24,30 +26,27 @@ def search_directory(dir_name):
         print(f"Directory '{directory_name}' Not Exists")
     else:
         is_goto_file = input(
-            f"Directory '{directory_name}' already Exists! Do you want to open the path? Y/N: ")
+            f"Directory '{directory_name}' Exists! Do you want to open the path? Y/N: ")
         if is_goto_file.strip().upper() == 'Y':
             os.startfile(full_path)
 
 
 def main():
     dir_name = ""
+    print(f"{DIRECTORY_PATH}")
     while True:
         try:
             print("*****Ikki Automation Tools*****\n")
             print("[1]Create Directory\n[2]Search Directory\n[3]Exit")
             choice = int(input("Enter Choice: "))
-            if choice == 4:
-                print('Program Ended')
-                choice = None
-                break
             if not dir_name:
                 dir_name = input("Enter Directory Name: ")
                 if not dir_name:
                     print(f"Please Enter Directory Name")
                     continue
-
             # Choices
             match choice:
+
                 case 1:
                     create_directory(dir_name)
                 case 2:
@@ -56,6 +55,15 @@ def main():
                     print("Goodbye!")
                     break
 
+            # if choice == 3:
+            #     print('Program Ended')
+            #     choice = None
+            #     break
+            # if not dir_name:
+            #     dir_name = input("Enter Directory Name: ")
+            #     if not dir_name:
+            #         print(f"Please Enter Directory Name")
+            #         continue
         except ValueError:
             print("Invalid Input\n")
 
